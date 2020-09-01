@@ -12,12 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-2016]
-        node-version: [12.x, 14.x]
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
@@ -32,11 +27,8 @@ jobs:
       
   test:
     needs: [build]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-2016]
-        node-version: [12.x, 14.x]
+    runs-on: self-hosted
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@master
